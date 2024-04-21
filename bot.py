@@ -4,6 +4,8 @@ import random
 Token = '6792059260:AAFaoYMoybrMEY9a38sL2DKtQyUoyK6eHAQ'
 bot = telebot.TeleBot(Token)
 
+
+
 #-----------------------------------------------------------------------------------------------
 hangman = ['''
     +---+
