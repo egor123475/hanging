@@ -50,13 +50,13 @@ def RandomWord(WordList):
     return WordList[word]
 
 def interface(unCorrectLetters, CorrectLetter, Riddle):
-    person = hangman[len(unCorrectLetters)]
+    print(hangman[len(unCorrectLetters)])
+    print()
 
-
-    UNCletter = str('Неправильные буквы:', end=' ')
+    print('Неправильные буквы:', end=' ')
     for letter in unCorrectLetters:
-        a = str(letter, end=' ')
-    
+        print(letter, end=' ')
+    print()
 
     spaces = '_' * len(Riddle)
 
@@ -65,20 +65,12 @@ def interface(unCorrectLetters, CorrectLetter, Riddle):
             spaces = spaces[:i] + Riddle[i] + spaces[i+1:]
 
     for letter in spaces:
-        b = str(letter, end=' ')
-    
-    input_letter = 'Введите букву:'
-    def BotMessage():
-        bot_message = person
-        bot_message += "\n" + UNCletter
-        bot_message += "\n" + spaces
-        bot_message += "\n" + input_letter
-        return bot_message
-
-
+        print(letter, end=' ')
+    print()
 
 def Guess(already):
     while True:
+        print('Введите букву:')
         guess = input()
         guess = guess.lower()
         if len(guess) != 1:
@@ -119,29 +111,14 @@ while True:
             break
             
 
-@bot.message_handler(content_types=['text'])
-def main(message):
-    if message.text == 'Виселица':
-        txt = 'Игра "Виселица" \n' + BotMessage()
-        bot.send_message(message.from_user.id, txt)
+    '''@bot.message_handler(content_types=['text'])
+    def main(message):
+        if message.text == 'Виселица':
+            
+        elif message.text == "/help":
+            bot.send_message(message.from_user.id, help)
+        else:
+            bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
+            
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        '''elif message.text == "/help":
-        bot.send_message(message.from_user.id, help)
-    else:
-        bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")'''
-        
-
-bot.polling(none_stop=True, interval=0, timeout=120)
+    bot.polling(none_stop=True, interval=0, timeout=120)'''
