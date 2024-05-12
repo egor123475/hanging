@@ -5,7 +5,7 @@ import random
 Token = '6792059260:AAFaoYMoybrMEY9a38sL2DKtQyUoyK6eHAQ'
 bot = telebot.TeleBot(Token)
 
-#-----------------------------------------------------------------------------------------------
+
 hangman = ['''
     +---+
         |
@@ -42,8 +42,8 @@ hangman = ['''
    /|\  |
    / \  |
        ===''']
-#-----------------------------------------------------------------------------------------------
-words = 'слово егор артем'.split()
+
+words = 'акула баран бегемот верблюд ворона гепард гиена дельфин дятел ехидна жаба жираф заяц зебра игуана кабан козёл лебедь ленивец медведь мангуст норка носорог олень пингвин попугай собака суслик тюлень утконос фазан хорёк хомяк цапля чайка щегол ягуар ястреб'.split()
 
 def RandomWord(WordList):
     word = random.randint(0, len(WordList) - 1)
@@ -98,22 +98,23 @@ while True:
             if Riddle[i] not in CorrectLetter:
                 allLetters = False
                 break
-            if allLetters == True:
-                print('Вы угадали! Загаданное слово - "' + Riddle + '"!')
-                break
+        if allLetters:
+            print('Вы угадали! Загаданное слово - "' + Riddle + '"!')
+            break
 
     else:
         unCorrectLetters = unCorrectLetters + guess
 
-        if len(unCorrectLetters) == len(hangman) - 3:
+        if len(unCorrectLetters) == len(hangman) - 1:
             interface(unCorrectLetters, CorrectLetter, Riddle)
-            print('вы исчерпали попытки')
+            print('Вы исчерпали все попытки! Загаданное слово - "' + Riddle + '"!')
+            break
             
 
     '''@bot.message_handler(content_types=['text'])
     def main(message):
-        if message.text == 'Разработчик':
-            bot.send_message(message.from_user.id, hanging)
+        if message.text == 'Виселица':
+            
         elif message.text == "/help":
             bot.send_message(message.from_user.id, help)
         else:
